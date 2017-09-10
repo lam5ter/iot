@@ -22,24 +22,15 @@ int main() {
 
     
     char weather[20];
-    // Flash RGB LED
-    /*
-    while (1) {
-        digitalWrite(1, LOW);
-        digitalWrite(3, HIGH);
-        delay(500);
-        if (digitalRead(0) == HIGH) break;
-        digitalWrite(2, LOW);
-        digitalWrite(1, HIGH);
-        delay(500);
-        if (digitalRead(0) == HIGH) break;
-        digitalWrite(3, LOW);
-        digitalWrite(2, HIGH);
-        delay(500);
-        if (digitalRead(0) == HIGH) break;
-    }
-    */
-    while (1) {
+    bool pressed = false;
+
+    // While the exit button has not been pressed
+    while (!pressed) {
+        // Reset RGB LED
+        for (int i = 1; i <= 3; i++)
+            digitalWrite(i, HIGH);
+
+        // Check current weather
         weather_today(weather);
         if (weather == NULL) {
             cout << "Line 27: No weather data" << endl;
@@ -47,15 +38,27 @@ int main() {
         }/* else {
             cout << "Today is " << weather << endl;
         }*/
+
+        // Check for the corresponding colour for the weather
         int colour = det_colour(weather);
 
         if (colour == -1) {
             cout << "main.cpp: Weather not in bank" << endl;
             exit(0);
         }
+
+        // Update RGB LED colour
         digitalWrite(colour, LOW);
-        if (digitalRead(0) == HIGH) break;
-        delay(250);
+
+        // Wait 1 hour before next check
+        for (int i = 0; i < 14400; i++) {
+            // Poll exit button
+            if (digitalRead(0) == HIGH) {
+                pressed = true;
+                break;
+            }
+            delay(250);
+        }
     }
 
     // Return GPIO pins to initial state
@@ -66,3 +69,4 @@ int main() {
     return 0;
 
 }
+
