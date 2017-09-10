@@ -59,3 +59,7 @@ Changelog:
 10/09/2017 - 17:07
     - Changes RGB LED to corresponding colour
 
+10/09/2017 - 22:42
+    - Fixed bug where RGB LED was not reset before next update
+    - Added printing/debug mode
+
