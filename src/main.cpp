@@ -11,8 +11,12 @@ using namespace std;
 int main(int argc, char *argv[]) {
 
     bool print = false;
+    bool log = false;
     if (argc > 1 && strcmp(argv[1], "-p") == 0)
         print = true;
+    else if (argc > 1 && strcmp(argv[1], "-l") == 0)
+        log = true;
+
     //Initialisation of RP GPIO pins
     wiringPiSetup();
     pinMode(0, INPUT);  // GPIO 0 = Emergency stop button
@@ -23,6 +27,11 @@ int main(int argc, char *argv[]) {
         digitalWrite(i, HIGH);
     }
 
+    // Create history log of output
+    ofstream fp;
+    if (log == true) {
+        fp.open("../tmp/log.txt");
+    }
     
     char weather[20];
     bool pressed = false;
@@ -38,6 +47,8 @@ int main(int argc, char *argv[]) {
         if (weather == NULL) {
             cout << "Line 27: No weather data" << endl;
             exit(1);
+        } else if (log == true) {
+            fp << "Today is " << weather << endl;
         } else if (print == true) {
             cout << "Today is " << weather << endl;
         }
@@ -47,9 +58,14 @@ int main(int argc, char *argv[]) {
 
         if (colour == -1) {
             cout << "main.cpp: Weather not in bank" << endl;
-            exit(0);
+            exit(1);
+        } else if (log == true) {
+            fp << "Colour: " << colour << endl;
+        } else if (print == true) {
+            cout << "Colour: " << colour << endl;
         }
 
+        
         // Update RGB LED colour
         digitalWrite(colour, LOW);
 
@@ -68,6 +84,9 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i <= 3; i++) {
         pinMode(i, INPUT);
     }
+
+    // Close log file
+    if (log == true) fp.close();
 
     return 0;
 

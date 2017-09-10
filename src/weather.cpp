@@ -82,6 +82,7 @@ int det_colour(char *weather) {
     }
 
     for (i = 0; i < max; i++) {
+        // cout << TYPES[i] << endl;
         if (strcmp(weather, TYPES[i]) == 0) break;
     }
 

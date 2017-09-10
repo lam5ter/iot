@@ -32,6 +32,8 @@ src:
     weather - Utilised shell script (bin/weather.sh) to determine
                   current weather.
 
+tmp:
+    log.txt - History log of the weather
 
 =======================================================================
 
@@ -62,4 +64,9 @@ Changelog:
 10/09/2017 - 22:42
     - Fixed bug where RGB LED was not reset before next update
     - Added printing/debug mode
+
+11/09/2017 - 08:47
+    - Fixed bug where LED was red when sunny
+    - Added tmp/log.txt
+    - Added logging flag
 

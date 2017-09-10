@@ -12,7 +12,7 @@ int det_colour(char *weather);
 
 const char * const TYPES[] = {
     "rain",
-    "shower"
+    "shower",
     "windy",
     "cloudy",
     "foggy",
