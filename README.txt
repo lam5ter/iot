@@ -8,6 +8,8 @@ Operating Instructions:
 
 $ ./run
 
+Push button (active HIGH) connected to GPIO 0 to stop program
+
 =======================================================================
 
 File Manifest:
