@@ -1,3 +1,5 @@
 #!/bin/sh
 
-cd bin; ./all; cd ..
+arg=$1
+
+cd bin; ./all $arg; cd ..

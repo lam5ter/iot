@@ -1,15 +1,18 @@
 #include <iostream>
 #include <wiringPi.h>
 #include <fstream>
-#include <stdio.h>
+#include <cstring>
 
 // Header files
 #include "weather.h"
 
 using namespace std;
 
-int main() {
+int main(int argc, char *argv[]) {
 
+    bool print = false;
+    if (argc > 1 && strcmp(argv[1], "-p") == 0)
+        print = true;
     //Initialisation of RP GPIO pins
     wiringPiSetup();
     pinMode(0, INPUT);  // GPIO 0 = Emergency stop button
@@ -35,9 +38,9 @@ int main() {
         if (weather == NULL) {
             cout << "Line 27: No weather data" << endl;
             exit(1);
-        }/* else {
+        } else if (print == true) {
             cout << "Today is " << weather << endl;
-        }*/
+        }
 
         // Check for the corresponding colour for the weather
         int colour = det_colour(weather);
