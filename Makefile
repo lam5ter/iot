@@ -1,7 +1,7 @@
 # Define required macros here
 
 OBJS = bin/main.o bin/weather.o
-CFLAGS = -Wall -Werror
+CFLAGS = -Wall -Werror -I include
 CC = g++
 LIBS = -lwiringPi
 
