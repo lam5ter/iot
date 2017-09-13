@@ -80,7 +80,10 @@ bool is_exit() {
     for (int i = 0; i < 14400; i++) {
         // Poll exit button
         if (digitalRead(0) == HIGH) {
-            return true;
+            // Debouce button
+			delay(3000);
+			if (digitalRead(0) == HIGH)
+            	return true;
         }
         delay(250);
     }
