@@ -70,3 +70,8 @@ Changelog:
     - Added tmp/log.txt
     - Added logging flag
 
+13/09/2017 - 00:20
+    - Added include folder and updated Makefile
+    - Created io_control
+    - Added timestamping in log
+

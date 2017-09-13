@@ -1,5 +1,8 @@
 #!/bin/sh
 
-arg=$1
+for i in $@
+do
+    args="$args $i"
+done
 
-cd bin; ./all $arg; cd ..
+cd bin; ./all $args; cd ..
