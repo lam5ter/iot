@@ -8,6 +8,10 @@ Operating Instructions:
 
 $ ./run
 
+Flags:
+		-p - Prints output to STDIN
+		-l - Logs output to tmp/log.txt
+
 Push button (active HIGH) connected to GPIO 0 to stop program
 
 =======================================================================
