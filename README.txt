@@ -6,11 +6,12 @@ by Nathan Lam (10/09/2017)
 
 Operating Instructions:
 
-$ ./run
+$ ./run [FLAGS]
 
-Flags:
+Optional Flags:
 		-p - Prints output to STDIN
 		-l - Logs output to tmp/log.txt
+        -h or -? - Prints help file
 
 Push button (active HIGH) connected to GPIO 0 to stop program
 
@@ -28,6 +29,7 @@ bin:
     *.o - Object files to build the final binary
 
 doc:
+    help.txt - Help file with operation instructions
 
 ext:
 
@@ -78,4 +80,9 @@ Changelog:
     - Added include folder and updated Makefile
     - Created io_control
     - Added timestamping in log
+    - Added debounce switch
+
+16/09/2017 - 17:51
+    - Added sleep time for LED to turn off during (2300 - 0600)
+    - Create a help file and a corresponding flag
 
