@@ -15,10 +15,25 @@ flags *update_flags(int num, char *args[]) {
     f->print = f->log = false;
     
     for (int i = 1; i < num; i++) {
-        if (strcmp(args[i], "-p") == 0)
+        if (strcmp(args[i], "-h") == 0 || strcmp(args[i], "-?") == 0) {
+            // Print help file
+            ifstream h;
+            h.open("../doc/help.txt");
+            if (h.is_open())
+                cout << h.rdbuf();
+            h.close();
+            delete f;
+            exit(0);
+        } else if (strcmp(args[i], "-p") == 0)
             f->print = true;
-        if (strcmp(args[i], "-l") == 0)
+        else if (strcmp(args[i], "-l") == 0)
             f->log = true;
+        else {
+            // Print error message for invalid flag.
+            cout << "Invalid flag. Use ./run -h for usage." << endl;
+            delete f;
+            exit(0);
+        }
     }
 
     return f;
@@ -70,6 +85,10 @@ void init_io() {
 }
 
 void update_rgb(int colour) {
+
+    time_t cur_time = time(NULL);
+    struct tm *t= localtime(&cur_time);
+    if (t->tm_hour < 6 || t->tm_hour > 23) return;
 
     digitalWrite(colour, LOW);
 

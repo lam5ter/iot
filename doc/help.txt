@@ -1,0 +1,22 @@
+
+IOT Project
+
+written by Ben Lam
+16/09/2017
+
+This program is a minature version of Internet of Things using a Raspberry Pi
+as the central computing system.
+
+Usage:
+
+    ./run [FLAGS] - Runs the program.
+
+Optional Flags:
+
+    -l - Logs weather and output every hour in tmp/log.txt
+
+    -p - Prints weather and output every hour to STDOUT.
+
+    -h or -? - Help file is printed to STDOUT.
+
+
