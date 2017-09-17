@@ -87,8 +87,9 @@ void init_io() {
 void update_rgb(int colour) {
 
     time_t cur_time = time(NULL);
-    struct tm *t= localtime(&cur_time);
-    if (t->tm_hour < 6 || t->tm_hour > 23) return;
+    struct tm *t = localtime(&cur_time);
+    
+    if (t->tm_hour <= 6 || t->tm_hour >= 23) return;
 
     digitalWrite(colour, LOW);
 

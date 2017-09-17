@@ -33,6 +33,10 @@ doc:
 
 ext:
 
+include:
+    weather.h - Header file for src/weather.cpp
+    io_control.h - Header file for src/io_control.cpp
+
 src:
     main - Main program file
     weather - Utilised shell script (bin/weather.sh) to determine
