@@ -16,6 +16,7 @@ const char * const TYPES[] = {
     "windy",
     "cloudy",
     "foggy",
+    "hazy",
     "sunny",
     "clear"
 };
@@ -24,6 +25,7 @@ const char * const TYPES[] = {
 const int COLOURS[] = {
     1,
     1,
+    3,
     3,
     3,
     3,
